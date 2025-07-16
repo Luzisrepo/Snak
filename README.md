@@ -1,4 +1,4 @@
-Sure! Here's a fun and engaging `README.md` for your 8-bit Snake game project:
+Read this - Much love by ._rayzz
 
 ---
 
