@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Snake</title>
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="pixel-background"></div>
+<div class="grid-overlay"></div>
+<div class="meteor-container" id="meteor-container"></div>
+<div class="cat-sprite"></div>
+
+<!-- Pixel Reveal Container -->
+<div class="pixel-reveal-container" id="pixel-reveal-container"></div>
+
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-container">
+    <div class="heart-preloader-container">
+      <div class="pixel-heart-container">
+        <div class="pixel-heart"></div>
+      </div>
+      <div class="loading-progress">
+        <div class="loading-progress-bar" id="loading-progress-bar"></div>
+      </div>
+    </div>
+    <p class="loading-text">Loading<br />Made by ._rayzz</p>
+  </div>
+</div>
+
+<div class="game-canvas-container">
+  <canvas id="game-canvas" class="game-canvas" width="600" height="600"></canvas>
+  <div class="pixelated-border"></div>
+</div>
+
+<div class="floating-particles" id="floating-particles"></div>
+
+<div class="interface-container">
+  <div class="header">
+    <div class="header-item"></div>
+    <div class="header-item">._rayzz<br />Snake Game</div>
+    <div class="header-item" id="timestamp">TIME: 00:00:00</div>
+  </div>
+</div>
+
+<div class="data-panel" style="position: absolute; top: 20px; left: 20px;">
+  <div class="data-panel-title">
+    <span>SNAKE PROGRESS</span>
+    <span id="status-indicator">●</span>
+  </div>
+  <div class="data-bar">
+    <div class="data-bar-fill" id="stability-bar" style="width: 75%;"></div>
+  </div>
+  <div class="data-readouts">
+    <div class="data-row">
+      <span class="data-label">GROWTH:</span>
+      <span class="data-value" id="length-value">3</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">STUFF FOUND:</span>
+      <span class="data-value" id="score-value">0</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">STATUS:</span>
+      <span class="data-value" id="status-value">READY</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">LEVEL:</span>
+      <span class="data-value" id="level-value">1</span>
+    </div>
+  </div>
+</div>
+
+<div class="control-panel" style="top: 50%; left: 20px; transform: translateY(-50%);">
+  <div class="panel-header">
+    <span class="data-panel-title">GAME CONTROLS</span>
+  </div>
+  <div class="control-group">
+    <div class="control-row">
+      <span class="control-label">SNAKE SPEED</span>
+      <span class="control-value" id="speed-value">1.0</span>
+    </div>
+    <div class="slider-container">
+      <input type="range" min="0.5" max="2" value="1" step="0.1" class="slider" id="speed-slider">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-row">
+      <span class="control-label">GRID SIZE</span>
+      <span class="control-value" id="resolution-value">20</span>
+    </div>
+    <div class="slider-container">
+      <input type="range" min="10" max="30" value="20" step="5" class="slider" id="resolution-slider">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-row">
+      <span class="control-label">BURST POWER</span>
+      <span class="control-value" id="burst-value">1.0</span>
+    </div>
+    <div class="slider-container">
+      <input type="range" min="0.5" max="2" value="1" step="0.1" class="slider" id="burst-slider">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-row">
+      <span class="control-label">MUSIC VOLUME</span>
+      <span class="control-value" id="music-volume-value">1.0</span>
+    </div>
+    <div class="slider-container">
+      <input type="range" min="0" max="1" value="1" step="0.1" class="slider" id="music-volume-slider">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="control-row">
+      <span class="control-label">SFX VOLUME</span>
+      <span class="control-value" id="sfx-volume-value">1.0</span>
+    </div>
+    <div class="slider-container">
+      <input type="range" min="0" max="1" value="1" step="0.1" class="slider" id="sfx-volume-slider">
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn" id="reset-btn">RESET</button>
+    <button class="btn" id="pause-btn">PAUSE</button>
+  </div>
+</div>
+
+<div class="terminal-panel">
+  <div class="terminal-header">
+    <span>GAME CONSOLE</span>
+    <span id="terminal-status">READY</span>
+  </div>
+  <div class="terminal-content" id="terminal-content">
+    <div class="terminal-line">Game Started</div>
+    <div class="terminal-line command-line">snake.init(speed: 1.0, gridSize: 20, intention: true);</div>
+    <div class="terminal-line regular-line">Use arrow keys to move.</div>
+    <div class="terminal-line command-line">console.log('Hello worldddd Rayzzz is so goated');</div>
+    <div class="terminal-line typing"></div>
+  </div>
+</div>
+
+<div class="story-panel">
+  <div class="story-header">
+    <span>CHALLENGE STORY</span>
+  </div>
+  <div class="story-content" id="story-content">
+    <p>Challenge starts here</p>
+  </div>
+</div>
+
+<div class="start-screen" id="start-screen">
+  <h2 class="start-body">._Rayzz</h2>
+  <h1 class="start-title">Snake game that collects stuff.</h1>
+  <p class="start-subtitle">USE ARROW KEYS TO NAVIGATE<br>COLLECT STUFF TO REVEAL YOUR STORY</p>
+
+  <div class="arrow-controls">
+    <div class="arrow-row">
+      <div class="arrow-cell">
+        <img src="https://assets.codepen.io/7558/pixel-right-arrow.svg" class="arrow-img arrow-up" alt="Up Arrow">
+      </div>
+    </div>
+    <div class="arrow-label">UP</div>
+
+    <div class="arrow-row">
+      <div class="arrow-cell">
+        <img src="https://assets.codepen.io/7558/pixel-right-arrow.svg" class="arrow-img arrow-left" alt="Left Arrow">
+      </div>
+      <div class="arrow-cell" style="width: 64px;"></div>
+      <div class="arrow-cell">
+        <img src="https://assets.codepen.io/7558/pixel-right-arrow.svg" class="arrow-img arrow-right" alt="Right Arrow">
+      </div>
+    </div>
+    <div class="arrow-label arrow-left-right"><span>LEFT</span> <span>RIGHT</span></div>
+
+    <div class="arrow-row">
+      <div class="arrow-cell">
+        <img src="https://assets.codepen.io/7558/pixel-right-arrow.svg" class="arrow-img arrow-down" alt="Down Arrow">
+      </div>
+    </div>
+    <div class="arrow-label">DOWN</div>
+  </div>
+
+  <button class="start-btn" id="start-btn">Start Game</button>
+</div>
+
+<div class="game-over-overlay" id="game-over-overlay">
+  <div class="game-over-title">Game Completed</div>
+  <div class="game-over-score">POINTS COLLECTED: <span id="final-score">0</span></div>
+  <button class="restart-btn" id="restart-btn">START NEW JOURNEY</button>
+  <div class="game-over-credits">
+    <p>Made by ._rayzz</p>
+    <p>for some stupid challenge</p><br>
+    <p>music doesnt have copyright<br>
+      (AS <a href="https://open.spotify.com/artist/6YXgRMajnjib8j6Cxzcryp?si=zHEb7Bc_QLq9tahiWq7Ltw" target="_blank">LXSTNGHT - (Music)</a>)</p>
+  </div>
+</div>
+
+<div class="audio-control">
+  <button class="audio-btn" id="audio-toggle">🔊</button>
+</div>
+
+<audio id="background-music" loop>
+  <source src="https://assets.codepen.io/7558/webflow-gsap-song-02.mp3" type="audio/mp3">
+</audio>
+<audio id="eat-sound">
+  <source src="https://assets.codepen.io/7558/eat-sound.mp3" type="audio/mp3">
+</audio>
+<audio id="game-over-sound">
+  <source src="https://assets.codepen.io/7558/game-over.mp3" type="audio/mp3">
+</audio>
+<audio id="level-up-sound">
+  <source src="https://assets.codepen.io/7558/level-up.mp3" type="audio/mp3">
+</audio>
+<audio id="meteor-sound">
+  <source src="https://assets.codepen.io/7558/meteor-sound.mp3" type="audio/mp3">
+</audio>
+<audio id="explosion-sound">
+  <source src="https://assets.codepen.io/7558/explosion.mp3" type="audio/mp3">
+</audio>
+<audio id="gsap-sound">
+  <source src="https://assets.codepen.io/7558/gsap-webflow-sound.mp3" type="audio/mp3">
+</audio>
+<audio id="webflow-sound">
+  <source src="https://assets.codepen.io/7558/gsap-webflow-sound.mp3" type="audio/mp3">
+</audio>
+<!-- partial -->
+  <script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Physics2DPlugin.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PhysicsPropsPlugin.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
