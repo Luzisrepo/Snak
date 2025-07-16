@@ -4,8 +4,21 @@
   <meta charset="UTF-8">
   <title>Snake - Made by rayzz</title>
   <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
-<link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css">
 
+  <script>
+    // Title animation
+    let titleText = " Snake - Made by rayzz ";
+    let speed = 200; // milliseconds
+
+    function scrollTitle() {
+      document.title = titleText;
+      titleText = titleText.substring(1) + titleText.charAt(0);
+      setTimeout(scrollTitle, speed);
+    }
+
+    scrollTitle();
+  </script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
