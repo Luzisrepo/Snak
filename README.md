@@ -4,7 +4,7 @@ Read this - Much love by ._rayzz
 
 # 🐍 8-Bit Snake Game
 
-A retro-style Snake game built with pure **HTML, CSS, and JavaScript**, featuring **amazing 8-bit graphics** and **nostalgic chiptune music** — all made **for fun** by [.\_rayzz](https://github.com/._rayzz)!
+A retro-style Snake game built with pure **HTML, CSS, and JavaScript**, featuring **amazing 8-bit graphics** and **nostalgic chiptune music** — all made **for fun** by [.\_rayzz](https://github.com/Luzisrepo/)!
 
 ![snake-banner](https://cdn.discordapp.com/attachments/1338127333504323764/1395066522006720522/0A50FB79-38DB-4917-A667-8A55431B06ED.png?ex=68791871&is=6877c6f1&hm=64023bd1c6f69e2e33ad735f558d0f3b1ae9940a15e28282d477cdef81bd7229&) 
 
